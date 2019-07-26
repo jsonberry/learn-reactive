@@ -1,0 +1,37 @@
+#title {
+  letter-spacing: 1px;
+  padding: 2rem;
+  text-align: center;
+}
+
+#title h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+  color: #212121;
+}
+
+#title p {
+  color: #009688;
+  margin: 0 1rem 0 0;
+  display: inline-block;
+}
+
+@media (min-width: 1440px) {
+  #title {
+    background-color: transparent;
+    position: fixed;
+    text-align: left;
+    width: 20rem;
+    left: 0;
+    z-index: 1;
+    top: 0;
+  }
+
+  #title h1 {
+    font-size: 4rem;
+  }
+
+  #title p {
+    display: block;
+  }
+}

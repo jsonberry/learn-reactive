@@ -1,0 +1,57 @@
+@keyframes fadeIn {
+  from {
+    transform: translate(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    transform: translate(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate(0, 100px);
+    opacity: 0;
+  }
+}
+
+
+#filters {
+  position: fixed;
+  bottom: 1rem;
+  margin-left: 1rem;
+  z-index: 2;
+}
+
+#filters form {
+  display: none;
+  background-color: #fff;
+  box-shadow: 1px 1px 4px 1px #9E9E9E;
+  border-radius: 4px;
+  padding: 1rem;
+  max-width: 8rem;
+  margin-bottom: 1rem;
+}
+
+#filters form.hidden {
+  animation: fadeOut 250ms ease-in forwards;
+}
+
+#filters form.visible {
+  animation: fadeIn 250ms ease-in forwards;
+}
+
+#filters form p {
+  margin: 0;
+}
+
+#filters form label {
+  display: block;
+}

@@ -1,0 +1,102 @@
+#list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+#list button {
+  border: 0;
+  background-color: transparent;
+  box-shadow: 1px 1px 4px 1px #9E9E9E;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 3rem;
+  padding: 0;
+  position: relative;
+  text-align: left;
+  width: 325px;
+}
+
+ #list .cost {
+  background-color: #B2DFDB;
+  left: 0;
+  margin: 0;
+  padding: 4px 0;
+  position: relative;
+  top: 1rem;
+  width: 4.5rem;
+}
+
+ #list .cost span {
+  color: #000;
+  font-weight: 600;
+  margin-left: 2rem;
+  text-transform: uppercase;
+}
+
+ #list div.tags p {
+  color: #757575;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0 1rem 0.5rem 0;
+}
+
+ #list h1 {
+  color: #212121;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+ #list div.container {
+  padding: 2rem;
+}
+
+ #list div.meta {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+#list div.meta div {
+  display: flex;
+}
+
+ #list div.meta p {
+  background-color: black;
+  color: #FFF;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0 0.5rem 0.5rem 0;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+}
+
+ #list div.meta i {
+  color: gold;
+  font-size: 2rem;
+}
+
+ #list .padding-container {
+  padding: 2rem;
+  position: relative;
+}
+
+@media(min-width: 840px) {
+  #list button {
+   width: 742px;
+ }
+
+  #list h1 {
+    font-size: 2rem;
+  }
+}
+
+@media(min-width: 1440px) {
+  #list {
+    padding-top: 3rem;
+  }
+}

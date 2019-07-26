@@ -1,1 +1,132 @@
-{"resources":{"dynamics-of-change-why-reactivity-matters":{"id":"dynamics-of-change-why-reactivity-matters","title":"Dynamics of Change: Why Reactivity Matters","tags":["Academic","FRP","Reactive Programming"],"cost":"Free","difficulty":"Beginner","format":"Video","bestOf":true,"content":"<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/v68ppDlvHqs\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n<p>Recorded at the [<a href=\"https://16.polyconf.com/%5D\">https://16.polyconf.com/]</a>(2016 Polyconf), [<a href=\"https://twitter.com/andrestaltz%5D\">https://twitter.com/andrestaltz]</a>(André Staltz) gives a framework agnostic talk that touches upon many of the principles and modules discussed on Pentacle, and it gets to the heart of defining what reactive systems are all about.</p>\n<blockquote>\n<p>“[Reactive is] when the module being changed is responsible for defining that change” </p>\n</blockquote>\n<p>This is one of the best beginner level videos for getting an insight into what it means to architect applications in a reactive way and understand the benefits.</p>\n<p>At <em>11:35</em> Andre brings up creating an analytics module and how he handles solving that problem in a reactive way. In Pentacle you can see a real example of this style implemented in Angular using NgRx and RxJS in the [<a href=\"https://github.com/jsonberry/pentacle/blob/next/libs/analytics/data-access/src/lib/%2Bstate/analytics.effects.ts%5D\">https://github.com/jsonberry/pentacle/blob/next/libs/analytics/data-access/src/lib/%2Bstate/analytics.effects.ts]</a>(Analytics Effects module).</p>\n"},"the-introduction-to-reactive-programming-youve-been-missing":{"id":"the-introduction-to-reactive-programming-youve-been-missing","title":"The Introduction to Reactive Programming You've Been Missing","tags":["FRP","Reactive Programming","RxJS"],"cost":"Free","difficulty":"Beginner","format":"Article","bestOf":true,"origin":"André Staltz","origin_title":"The Introduction to Reactive Programming You've Been Missing","orgin_url":"https://gist.github.com/staltz/868e7e9bc2a7b8c1f754","content":"<p>Written in 2014 by [<a href=\"https://twitter.com/andrestaltz%5D\">https://twitter.com/andrestaltz]</a>(André Staltz), an alumni of RxJS development and the creator of a multitude of reactive tools including <a href=\"Cycle.js\">https://cycle.js.org/</a>. With 17k+ stars on GitHub since it surfaced, this post is hands down one of the best introductions to reactive programming that you can find. He uses RxJS as a means to communicate, but this intro goes beyond RxJS and encompasses reactive thinking in general. Start here!</p>\n<blockquote>\n<p>Note: Some of the RxJS syntax is outdated, but the updates you’d have to make for current versions is not drastic, mostly you’d just have move to [<a href=\"https://rxjs.dev/guide/v6/pipeable-operators%5D\">https://rxjs.dev/guide/v6/pipeable-operators]</a>(pipeable operators) instead of using the dot chaining methods. The fundamentals that are taught do not change, only a few syntax things here and there. Also note the flatmap operator is now just an alias for the preferred operator <a href=\"mergeMap\">https://rxjs.dev/api/operators/mergeMap</a>.</p>\n</blockquote>\n"}},"tags":["Academic","FRP","Reactive Programming"]}
+{
+  "resources": {
+    "dynamics-of-change-why-reactivity-matters": {
+      "id": "dynamics-of-change-why-reactivity-matters",
+      "title": "Dynamics of Change: Why Reactivity Matters",
+      "tags": ["Academic", "FRP", "Reactive Programming"],
+      "cost": false,
+      "difficulty": "Introductory",
+      "format": "Video",
+      "bestOf": true,
+      "content": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/v68ppDlvHqs\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n<p>Recorded at the [<a href=\"https://16.polyconf.com/%5D\">https://16.polyconf.com/]</a>(2016 Polyconf), [<a href=\"https://twitter.com/andrestaltz%5D\">https://twitter.com/andrestaltz]</a>(André Staltz) gives a framework agnostic talk that touches upon many of the principles and modules discussed on Pentacle, and it gets to the heart of defining what reactive systems are all about.</p>\n<blockquote>\n<p>“[Reactive is] when the module being changed is responsible for defining that change” </p>\n</blockquote>\n<p>This is one of the best beginner level videos for getting an insight into what it means to architect applications in a reactive way and understand the benefits.</p>\n<p>At <em>11:35</em> Andre brings up creating an analytics module and how he handles solving that problem in a reactive way. In Pentacle you can see a real example of this style implemented in Angular using NgRx and RxJS in the [<a href=\"https://github.com/jsonberry/pentacle/blob/next/libs/analytics/data-access/src/lib/%2Bstate/analytics.effects.ts%5D\">https://github.com/jsonberry/pentacle/blob/next/libs/analytics/data-access/src/lib/%2Bstate/analytics.effects.ts]</a>(Analytics Effects module).</p>\n"
+    },
+    "1the-introduction-to-reactive-programming-youve-been-missing": {
+      "id": "the-introduction-to-reactive-programming-youve-been-missing",
+      "title": "This is shorter",
+      "tags": ["FRP", "Something Dumb", "RxJS"],
+      "cost": true,
+      "difficulty": "Beginner",
+      "format": "Article",
+      "bestOf": false,
+      "origin": "André Staltz",
+      "origin_title": "The Introduction to Reactive Programming You've Been Missing",
+      "orgin_url": "https://gist.github.com/staltz/868e7e9bc2a7b8c1f754",
+      "content": "<p>Written in 2014 by [<a href=\"https://twitter.com/andrestaltz%5D\">https://twitter.com/andrestaltz]</a>(André Staltz), an alumni of RxJS development and the creator of a multitude of reactive tools including <a href=\"Cycle.js\">https://cycle.js.org/</a>. With 17k+ stars on GitHub since it surfaced, this post is hands down one of the best introductions to reactive programming that you can find. He uses RxJS as a means to communicate, but this intro goes beyond RxJS and encompasses reactive thinking in general. Start here!</p>\n<blockquote>\n<p>Note: Some of the RxJS syntax is outdated, but the updates you’d have to make for current versions is not drastic, mostly you’d just have move to [<a href=\"https://rxjs.dev/guide/v6/pipeable-operators%5D\">https://rxjs.dev/guide/v6/pipeable-operators]</a>(pipeable operators) instead of using the dot chaining methods. The fundamentals that are taught do not change, only a few syntax things here and there. Also note the flatmap operator is now just an alias for the preferred operator <a href=\"mergeMap\">https://rxjs.dev/api/operators/mergeMap</a>.</p>\n</blockquote>\n"
+    },
+    "2the-introduction-to-reactive-programming-youve-been-missing": {
+      "id": "the-introduction-to-reactive-programming-youve-been-missing",
+      "title": "The Introduction to Reactive Programming You've Been Missing",
+      "tags": ["FRP", "Reactive Programming", "RxJS"],
+      "cost": false,
+      "difficulty": "Intermediate",
+      "format": "Article",
+      "bestOf": true,
+      "origin": "André Staltz",
+      "origin_title": "The Introduction to Reactive Programming You've Been Missing",
+      "orgin_url": "https://gist.github.com/staltz/868e7e9bc2a7b8c1f754",
+      "content": "<p>Written in 2014 by [<a href=\"https://twitter.com/andrestaltz%5D\">https://twitter.com/andrestaltz]</a>(André Staltz), an alumni of RxJS development and the creator of a multitude of reactive tools including <a href=\"Cycle.js\">https://cycle.js.org/</a>. With 17k+ stars on GitHub since it surfaced, this post is hands down one of the best introductions to reactive programming that you can find. He uses RxJS as a means to communicate, but this intro goes beyond RxJS and encompasses reactive thinking in general. Start here!</p>\n<blockquote>\n<p>Note: Some of the RxJS syntax is outdated, but the updates you’d have to make for current versions is not drastic, mostly you’d just have move to [<a href=\"https://rxjs.dev/guide/v6/pipeable-operators%5D\">https://rxjs.dev/guide/v6/pipeable-operators]</a>(pipeable operators) instead of using the dot chaining methods. The fundamentals that are taught do not change, only a few syntax things here and there. Also note the flatmap operator is now just an alias for the preferred operator <a href=\"mergeMap\">https://rxjs.dev/api/operators/mergeMap</a>.</p>\n</blockquote>\n"
+    },
+    "3the-introduction-to-reactive-programming-youve-been-missing": {
+      "id": "the-introduction-to-reactive-programming-youve-been-missing",
+      "title": "The Introduction to Reactive Programming You've Been Missing",
+      "tags": ["FRP", "Reactive Programming", "RxJS"],
+      "cost": false,
+      "difficulty": "Advanced",
+      "format": "Article",
+      "bestOf": true,
+      "origin": "André Staltz",
+      "origin_title": "The Introduction to Reactive Programming You've Been Missing",
+      "orgin_url": "https://gist.github.com/staltz/868e7e9bc2a7b8c1f754",
+      "content": "<p>Written in 2014 by [<a href=\"https://twitter.com/andrestaltz%5D\">https://twitter.com/andrestaltz]</a>(André Staltz), an alumni of RxJS development and the creator of a multitude of reactive tools including <a href=\"Cycle.js\">https://cycle.js.org/</a>. With 17k+ stars on GitHub since it surfaced, this post is hands down one of the best introductions to reactive programming that you can find. He uses RxJS as a means to communicate, but this intro goes beyond RxJS and encompasses reactive thinking in general. Start here!</p>\n<blockquote>\n<p>Note: Some of the RxJS syntax is outdated, but the updates you’d have to make for current versions is not drastic, mostly you’d just have move to [<a href=\"https://rxjs.dev/guide/v6/pipeable-operators%5D\">https://rxjs.dev/guide/v6/pipeable-operators]</a>(pipeable operators) instead of using the dot chaining methods. The fundamentals that are taught do not change, only a few syntax things here and there. Also note the flatmap operator is now just an alias for the preferred operator <a href=\"mergeMap\">https://rxjs.dev/api/operators/mergeMap</a>.</p>\n</blockquote>\n"
+    },
+    "4the-introduction-to-reactive-programming-youve-been-missing": {
+      "id": "the-introduction-to-reactive-programming-youve-been-missing",
+      "title": "The Introduction to Reactive Programming You've Been Missing",
+      "tags": ["FRP", "Reactive Programming", "RxJS"],
+      "cost": false,
+      "difficulty": "Beginner",
+      "format": "Article",
+      "bestOf": true,
+      "origin": "André Staltz",
+      "origin_title": "The Introduction to Reactive Programming You've Been Missing",
+      "orgin_url": "https://gist.github.com/staltz/868e7e9bc2a7b8c1f754",
+      "content": "<p>Written in 2014 by [<a href=\"https://twitter.com/andrestaltz%5D\">https://twitter.com/andrestaltz]</a>(André Staltz), an alumni of RxJS development and the creator of a multitude of reactive tools including <a href=\"Cycle.js\">https://cycle.js.org/</a>. With 17k+ stars on GitHub since it surfaced, this post is hands down one of the best introductions to reactive programming that you can find. He uses RxJS as a means to communicate, but this intro goes beyond RxJS and encompasses reactive thinking in general. Start here!</p>\n<blockquote>\n<p>Note: Some of the RxJS syntax is outdated, but the updates you’d have to make for current versions is not drastic, mostly you’d just have move to [<a href=\"https://rxjs.dev/guide/v6/pipeable-operators%5D\">https://rxjs.dev/guide/v6/pipeable-operators]</a>(pipeable operators) instead of using the dot chaining methods. The fundamentals that are taught do not change, only a few syntax things here and there. Also note the flatmap operator is now just an alias for the preferred operator <a href=\"mergeMap\">https://rxjs.dev/api/operators/mergeMap</a>.</p>\n</blockquote>\n"
+    },
+    "5the-introduction-to-reactive-programming-youve-been-missing": {
+      "id": "the-introduction-to-reactive-programming-youve-been-missing",
+      "title": "The Introduction to Reactive Programming You've Been Missing",
+      "tags": ["FRP", "Reactive Programming", "RxJS"],
+      "cost": false,
+      "difficulty": "Beginner",
+      "format": "Article",
+      "bestOf": true,
+      "origin": "André Staltz",
+      "origin_title": "The Introduction to Reactive Programming You've Been Missing",
+      "orgin_url": "https://gist.github.com/staltz/868e7e9bc2a7b8c1f754",
+      "content": "<p>Written in 2014 by [<a href=\"https://twitter.com/andrestaltz%5D\">https://twitter.com/andrestaltz]</a>(André Staltz), an alumni of RxJS development and the creator of a multitude of reactive tools including <a href=\"Cycle.js\">https://cycle.js.org/</a>. With 17k+ stars on GitHub since it surfaced, this post is hands down one of the best introductions to reactive programming that you can find. He uses RxJS as a means to communicate, but this intro goes beyond RxJS and encompasses reactive thinking in general. Start here!</p>\n<blockquote>\n<p>Note: Some of the RxJS syntax is outdated, but the updates you’d have to make for current versions is not drastic, mostly you’d just have move to [<a href=\"https://rxjs.dev/guide/v6/pipeable-operators%5D\">https://rxjs.dev/guide/v6/pipeable-operators]</a>(pipeable operators) instead of using the dot chaining methods. The fundamentals that are taught do not change, only a few syntax things here and there. Also note the flatmap operator is now just an alias for the preferred operator <a href=\"mergeMap\">https://rxjs.dev/api/operators/mergeMap</a>.</p>\n</blockquote>\n"
+    },
+    "6the-introduction-to-reactive-programming-youve-been-missing": {
+      "id": "the-introduction-to-reactive-programming-youve-been-missing",
+      "title": "The Introduction to Reactive Programming You've Been Missing",
+      "tags": ["FRP", "Reactive Programming", "RxJS"],
+      "cost": false,
+      "difficulty": "Beginner",
+      "format": "Article",
+      "bestOf": true,
+      "origin": "André Staltz",
+      "origin_title": "The Introduction to Reactive Programming You've Been Missing",
+      "orgin_url": "https://gist.github.com/staltz/868e7e9bc2a7b8c1f754",
+      "content": "<p>Written in 2014 by [<a href=\"https://twitter.com/andrestaltz%5D\">https://twitter.com/andrestaltz]</a>(André Staltz), an alumni of RxJS development and the creator of a multitude of reactive tools including <a href=\"Cycle.js\">https://cycle.js.org/</a>. With 17k+ stars on GitHub since it surfaced, this post is hands down one of the best introductions to reactive programming that you can find. He uses RxJS as a means to communicate, but this intro goes beyond RxJS and encompasses reactive thinking in general. Start here!</p>\n<blockquote>\n<p>Note: Some of the RxJS syntax is outdated, but the updates you’d have to make for current versions is not drastic, mostly you’d just have move to [<a href=\"https://rxjs.dev/guide/v6/pipeable-operators%5D\">https://rxjs.dev/guide/v6/pipeable-operators]</a>(pipeable operators) instead of using the dot chaining methods. The fundamentals that are taught do not change, only a few syntax things here and there. Also note the flatmap operator is now just an alias for the preferred operator <a href=\"mergeMap\">https://rxjs.dev/api/operators/mergeMap</a>.</p>\n</blockquote>\n"
+    },
+    "7the-introduction-to-reactive-programming-youve-been-missing": {
+      "id": "the-introduction-to-reactive-programming-youve-been-missing",
+      "title": "The Introduction to Reactive Programming You've Been Missing",
+      "tags": ["FRP", "Reactive Programming", "RxJS"],
+      "cost": false,
+      "difficulty": "Beginner",
+      "format": "Article",
+      "bestOf": true,
+      "origin": "André Staltz",
+      "origin_title": "The Introduction to Reactive Programming You've Been Missing",
+      "orgin_url": "https://gist.github.com/staltz/868e7e9bc2a7b8c1f754",
+      "content": "<p>Written in 2014 by [<a href=\"https://twitter.com/andrestaltz%5D\">https://twitter.com/andrestaltz]</a>(André Staltz), an alumni of RxJS development and the creator of a multitude of reactive tools including <a href=\"Cycle.js\">https://cycle.js.org/</a>. With 17k+ stars on GitHub since it surfaced, this post is hands down one of the best introductions to reactive programming that you can find. He uses RxJS as a means to communicate, but this intro goes beyond RxJS and encompasses reactive thinking in general. Start here!</p>\n<blockquote>\n<p>Note: Some of the RxJS syntax is outdated, but the updates you’d have to make for current versions is not drastic, mostly you’d just have move to [<a href=\"https://rxjs.dev/guide/v6/pipeable-operators%5D\">https://rxjs.dev/guide/v6/pipeable-operators]</a>(pipeable operators) instead of using the dot chaining methods. The fundamentals that are taught do not change, only a few syntax things here and there. Also note the flatmap operator is now just an alias for the preferred operator <a href=\"mergeMap\">https://rxjs.dev/api/operators/mergeMap</a>.</p>\n</blockquote>\n"
+    },
+    "8the-introduction-to-reactive-programming-youve-been-missing": {
+      "id": "the-introduction-to-reactive-programming-youve-been-missing",
+      "title": "The Introduction to Reactive Programming You've Been Missing",
+      "tags": ["FRP", "Reactive Programming", "RxJS"],
+      "cost": false,
+      "difficulty": "Beginner",
+      "format": "Article",
+      "bestOf": true,
+      "origin": "André Staltz",
+      "origin_title": "The Introduction to Reactive Programming You've Been Missing",
+      "orgin_url": "https://gist.github.com/staltz/868e7e9bc2a7b8c1f754",
+      "content": "<p>Written in 2014 by [<a href=\"https://twitter.com/andrestaltz%5D\">https://twitter.com/andrestaltz]</a>(André Staltz), an alumni of RxJS development and the creator of a multitude of reactive tools including <a href=\"Cycle.js\">https://cycle.js.org/</a>. With 17k+ stars on GitHub since it surfaced, this post is hands down one of the best introductions to reactive programming that you can find. He uses RxJS as a means to communicate, but this intro goes beyond RxJS and encompasses reactive thinking in general. Start here!</p>\n<blockquote>\n<p>Note: Some of the RxJS syntax is outdated, but the updates you’d have to make for current versions is not drastic, mostly you’d just have move to [<a href=\"https://rxjs.dev/guide/v6/pipeable-operators%5D\">https://rxjs.dev/guide/v6/pipeable-operators]</a>(pipeable operators) instead of using the dot chaining methods. The fundamentals that are taught do not change, only a few syntax things here and there. Also note the flatmap operator is now just an alias for the preferred operator <a href=\"mergeMap\">https://rxjs.dev/api/operators/mergeMap</a>.</p>\n</blockquote>\n"
+    },
+    "the-introduction-to-reactive-programming-youve-been-missing": {
+      "id": "the-introduction-to-reactive-programming-youve-been-missing",
+      "title": "The Introduction to Reactive Programming You've Been Missing",
+      "tags": ["FRP", "Reactive Programming", "RxJS"],
+      "cost": false,
+      "difficulty": "Beginner",
+      "format": "Article",
+      "bestOf": true,
+      "origin": "André Staltz",
+      "origin_title": "The Introduction to Reactive Programming You've Been Missing",
+      "orgin_url": "https://gist.github.com/staltz/868e7e9bc2a7b8c1f754",
+      "content": "<p>Written in 2014 by [<a href=\"https://twitter.com/andrestaltz%5D\">https://twitter.com/andrestaltz]</a>(André Staltz), an alumni of RxJS development and the creator of a multitude of reactive tools including <a href=\"Cycle.js\">https://cycle.js.org/</a>. With 17k+ stars on GitHub since it surfaced, this post is hands down one of the best introductions to reactive programming that you can find. He uses RxJS as a means to communicate, but this intro goes beyond RxJS and encompasses reactive thinking in general. Start here!</p>\n<blockquote>\n<p>Note: Some of the RxJS syntax is outdated, but the updates you’d have to make for current versions is not drastic, mostly you’d just have move to [<a href=\"https://rxjs.dev/guide/v6/pipeable-operators%5D\">https://rxjs.dev/guide/v6/pipeable-operators]</a>(pipeable operators) instead of using the dot chaining methods. The fundamentals that are taught do not change, only a few syntax things here and there. Also note the flatmap operator is now just an alias for the preferred operator <a href=\"mergeMap\">https://rxjs.dev/api/operators/mergeMap</a>.</p>\n</blockquote>\n"
+    }
+  },
+  "tags": ["Academic", "FRP", "Reactive Programming"]
+}
