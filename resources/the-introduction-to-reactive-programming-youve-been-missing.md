@@ -4,9 +4,9 @@ tags:
  - FRP
  - Reactive Programming
  - RxJS
-cost: Free
-difficulty: Beginner
-format: Article
+cost: false
+difficulty: beginner
+format: article
 bestOf: true
 origin: André Staltz
 origin_title: "The Introduction to Reactive Programming You've Been Missing"

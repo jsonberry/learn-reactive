@@ -4,9 +4,9 @@ tags:
  - Academic
  - FRP
  - Reactive Programming
-cost: Free
-difficulty: Beginner
-format: Video
+cost: false
+difficulty: beginner
+format: video
 bestOf: true
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/v68ppDlvHqs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
