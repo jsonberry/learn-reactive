@@ -11,7 +11,7 @@
   box-shadow: 1px 1px 4px 1px #9E9E9E;
   cursor: pointer;
   display: block;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   padding: 0;
   position: relative;
   text-align: left;
@@ -65,7 +65,7 @@
 }
 
  #list div.meta p {
-  background-color: black;
+  /* border-radius: 1rem; */
   color: #FFF;
   font-size: .75rem;
   font-weight: 600;

@@ -36,22 +36,69 @@
   box-shadow: 1px 1px 4px 1px #9E9E9E;
   border-radius: 4px;
   padding: 1rem;
-  max-width: 8rem;
   margin-bottom: 1rem;
 }
 
 #filters form.hidden {
-  animation: fadeOut 250ms ease-in forwards;
+  animation: fadeOut 180ms ease-out forwards;
 }
 
 #filters form.visible {
-  animation: fadeIn 250ms ease-in forwards;
+  animation: fadeIn 180ms ease-out forwards;
 }
 
 #filters form p {
-  margin: 0;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem 0;
 }
 
 #filters form label {
   display: block;
+}
+
+#filters form button {
+  margin-top: 1rem;
+}
+
+#filters button {
+  padding: 0.25rem 0.5rem;
+}
+
+@media(min-width: 840px) {
+  #filters button {
+    padding: 0.5rem 1rem;
+  }
+}
+
+#filters button.filter-entry {
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  background-color: #FFF;
+  color: #212121;
+  border: 1px solid #212121;
+  cursor: pointer;
+  transition: all 180ms;
+  border-radius: 18px;
+}
+
+#filters button.filter-entry.open {
+  background-color: #212121;
+  color: #FFF;
+}
+
+#filters button.filter-entry i {
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+}
+
+@media(min-width: 840px) {
+  #filters button.filter-entry {
+   font-size: 1rem;
+  }
+
+  #filters button.filter-entry i {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+  }
 }
