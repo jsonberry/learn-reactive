@@ -1,0 +1,93 @@
+@keyframes flyIn {
+  from {
+    opacity: 0;
+    transform: scale(0) translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes flyOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0) translateY(100px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    right: 100%;
+  }
+
+  1% {
+    right: 0;
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    right: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    right: 0;
+  }
+
+  99% {
+    opacity: 0;
+    right: 0;
+  }
+
+  to {
+    opacity: 0;
+    right: 100%;
+  }  
+}
+
+#modal {
+  top: 0;
+  opacity: 0;
+  right: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(100, 100, 100, .5);
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#modal.closed {
+  animation: fadeOut 180ms ease-out forwards;
+}
+
+#modal.open {
+  animation: fadeIn 180ms ease-in forwards;
+}
+
+#modal-content {
+  max-width: 740px;
+  animation: flyOut 180ms ease-out;
+  background-color: #fff;
+  border-radius: .5rem;
+  padding: 2rem;
+  opacity: 0;
+  transform: scale(0) translateY(100px);
+}
+
+#modal.open #modal-content {
+  animation: flyIn 180ms ease-out 180ms forwards;
+}

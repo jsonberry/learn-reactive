@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-
 }
 
 #list button {
@@ -65,7 +64,6 @@
 }
 
  #list div.meta p {
-  /* border-radius: 1rem; */
   color: #FFF;
   font-size: .75rem;
   font-weight: 600;
