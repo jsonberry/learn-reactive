@@ -169,7 +169,8 @@
   color: gold;
 }
 
-#modal-content p {
+#modal-content p,
+#modal-content li {
   font-weight: 100;
 }
 
