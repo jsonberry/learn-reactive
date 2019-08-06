@@ -17,6 +17,10 @@
   width: 325px;
 }
 
+#list div.container {
+  padding: 2rem;
+}
+
  #list .cost {
   background-color: #B2DFDB;
   left: 0;
@@ -49,11 +53,11 @@
   margin-top: 0;
 }
 
- #list div.container {
-  padding: 2rem;
+#list hr { 
+  margin: 0;
 }
 
- #list div.meta {
+#list div.meta {
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
@@ -68,7 +72,7 @@
   font-size: .75rem;
   font-weight: 600;
   letter-spacing: 1px;
-  margin: 0 0.5rem 0.5rem 0;
+  margin: 0 0.5rem 0 0;
   padding: 0.5rem 1rem;
   text-transform: uppercase;
 }
