@@ -1,5 +1,6 @@
 ---
 title: "The Introduction to Reactive Programming You've Been Missing"
+author: André Staltz
 tags:
  - FRP
  - Reactive Programming
@@ -8,7 +9,6 @@ cost: false
 difficulty: beginner
 format: article
 bestOf: true
-origin: André Staltz
 origin_title: "The Introduction to Reactive Programming You've Been Missing"
 source: https://gist.github.com/staltz/868e7e9bc2a7b8c1f754
 ---

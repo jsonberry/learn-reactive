@@ -1,5 +1,6 @@
 ---
 title: 'Dynamics of Change: Why Reactivity Matters'
+author: André Staltz
 tags:
  - Academic
  - FRP
