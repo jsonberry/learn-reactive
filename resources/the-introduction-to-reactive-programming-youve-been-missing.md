@@ -10,7 +10,7 @@ format: article
 bestOf: true
 origin: André Staltz
 origin_title: "The Introduction to Reactive Programming You've Been Missing"
-orgin_url: https://gist.github.com/staltz/868e7e9bc2a7b8c1f754
+source: https://gist.github.com/staltz/868e7e9bc2a7b8c1f754
 ---
 Written in 2014 by <a href="https://twitter.com/andrestaltz" target="_blank">André Staltz</a>, an alumni of RxJS development and the creator of a multitude of reactive tools including [Cycle.js](https://cycle.js.org/). With 17k+ stars on GitHub since it surfaced, this post is hands down one of the best introductions to reactive programming that you can find. He uses RxJS as a means to communicate, but this intro goes beyond RxJS and encompasses reactive thinking in general. Start here!
 

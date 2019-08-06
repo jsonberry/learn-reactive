@@ -70,6 +70,16 @@
   }
 }
 
+#filters button.clear {
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
 #filters button.filter-entry {
   display: flex;
   align-items: center;
