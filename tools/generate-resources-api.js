@@ -23,7 +23,8 @@ fs.readdir(resourcesDir, (err, files) => {
       .join('-')
       .replace(':', '')
       .replace("'", '')
-      .replace(".", '');
+      .replace(".", '')
+      .replace("?", '');
     api.resources = {
       ...api.resources,
       [id]: {
