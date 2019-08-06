@@ -127,6 +127,7 @@
 
 #modal-content h1 {
   margin-top: 0;
+  margin-bottom: 1rem;
   font-size: 2rem;
 }
 
@@ -153,6 +154,7 @@
 
 #modal-content section.meta {
   display: flex;
+  margin-bottom: 0.5rem;
 }
 
 #modal-content section.meta p {
@@ -160,6 +162,11 @@
   margin-right: 0.5rem;
   font-size: 13px;
   text-transform: capitalize;
+}
+
+#modal-content section.meta i {
+  font-size: 1rem;
+  color: gold;
 }
 
 #modal-content p {
