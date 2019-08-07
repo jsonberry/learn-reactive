@@ -31,12 +31,12 @@
 }
 
 #filters form {
-  display: none;
   background-color: #fff;
-  box-shadow: 1px 1px 4px 1px #9E9E9E;
   border-radius: 4px;
-  padding: 1rem;
+  box-shadow: -1px 1px 3px 3px rgba(121, 129, 135, .3);
+  display: none;
   margin-bottom: 1rem;
+  padding: 1rem;
 }
 
 #filters form.hidden {
@@ -86,7 +86,7 @@
   font-size: 0.75rem;
   background-color: #FFF;
   color: #212121;
-  border: 1px solid #212121;
+  border: 1px solid #9E9E9E;
   cursor: pointer;
   transition: all 180ms;
   border-radius: 18px;
