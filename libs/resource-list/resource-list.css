@@ -23,7 +23,7 @@
 }
 
 #list div.container {
-  padding: 2rem;
+  padding: 2rem 2rem 0;
 }
 
  #list .cost {
@@ -44,7 +44,7 @@
 }
 
  #list div.tags p {
-  color: #757575;
+  color: #616161;
   display: inline-block;
   font-size: 1rem;
   margin: 0 1rem 0.5rem 0;
@@ -74,12 +74,13 @@
 
  #list div.meta p {
   color: #FFF;
-  font-size: .75rem;
+  font-size: 0.5rem;
   font-weight: 600;
   letter-spacing: 1px;
-  margin: 0 0.5rem 0 0;
-  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
   text-transform: uppercase;
+  border-radius: 1rem;
 }
 
  #list div.meta i {

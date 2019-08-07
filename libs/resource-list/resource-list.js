@@ -59,7 +59,6 @@ store$
                   </div>
                   <h1 class="card-title">${title}</h1>
                 </div>
-                <hr />
                 <div class="meta">
                   <div>
                     <p style="background-color: #009688;">${difficulty}</p>
