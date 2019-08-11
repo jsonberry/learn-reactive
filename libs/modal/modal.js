@@ -21,54 +21,54 @@ actions$
       return `
         <div class="modal-container">
           <article id="modal-content">
-            <h1>${resource.title}</h1>
-            <div class="keyline-container">
-              <div class="keyline"></div>
-              <div class="keyline-divider"></div>
-            </div>
+              <h1>${resource.title}</h1>
+              <div class="keyline-container">
+                <div class="keyline"></div>
+                <div class="keyline-divider"></div>
+              </div>
 
-            <section class="meta">
-              <p>
-                ${resource.author}
-              </p>
-              <p>/</p>
-              <p>
-                ${resource.difficulty} 
-              </p>
-              <p>/</p>
-              <p>
-              ${resource.format} 
-              </p>
-              ${resource.bestOf 
-                ? `
-                <p>/</p>
+              <section class="meta">
                 <p>
-                  <i class="material-icons" title="Best Of">star</i>
-                  <span>Best of</span>
+                  <span>Author</span>
+                  <span>${resource.author}</span>
                 </p>
-                `
-                : ''
-              }
-            </section>
-
-            <section>
-              ${resource.content}
-            </section>
-
-            <section class="source">
-              <button onclick="modalClosed()">
-                close
-              </button>
-              ${
-                resource.source
+                <p>
+                <span>Difficulty</span>
+                <span>${resource.difficulty}<span>
+                </p>
+                <p>
+                <span>Format</span>
+                <span>${resource.format}</span>
+                </p>
+                ${resource.bestOf 
                   ? `
-                    <a href="${resource.source}" target="_blank">
-                      go to source
-                    </a>
-                    `
+                  <p>
+                    <span>Best of</span>
+                    <i class="material-icons" title="Best Of">star</i>
+                  </p>
+                  `
                   : ''
-              }
-            </section>
+                }
+              </section>
+
+              <section>
+                ${resource.content}
+              </section>
+
+              <section class="actions">
+                <button onclick="modalClosed()">
+                  close
+                </button>
+                ${
+                  resource.source
+                    ? `
+                      <a href="${resource.source}" target="_blank">
+                        go to source
+                      </a>
+                      `
+                    : ''
+                }
+              </section>
           </article>
         </div>
       `;

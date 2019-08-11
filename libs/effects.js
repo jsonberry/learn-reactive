@@ -56,6 +56,49 @@ const breakpointEffect$ = actions$.pipe(
   })),
 );
 
+const bodyNoScrollEffect$ = rxjs
+  .combineLatest(
+    rxjs.merge(
+      actions$.pipe(
+        rxjs.operators.filter(s => s.type === 'resource selected'),
+        rxjs.operators.mapTo(true),
+      ),
+      actions$.pipe(
+        rxjs.operators.filter(s => s.type === 'modal closed'),
+        rxjs.operators.mapTo(false),
+      ),
+    ),
+    actions$.pipe(
+      rxjs.operators.filter(s => s.type === 'breakpoint'),
+      rxjs.operators.startWith({
+        isDesktop: window.matchMedia('(min-width: 840px)').matches,
+      }),
+      rxjs.operators.pluck('isDesktop'),
+    ),
+  )
+  .pipe(
+    rxjs.operators.tap(([open, isDesktop]) => {
+      const oldScrollPosition = !open
+        ? Math.abs(parseInt(document.body.style.top))
+        : null;
+
+      const overflow = (open && 'hidden') || 'auto';
+      const height = (open && !isDesktop && '100vh') || 'auto';
+      const position = (open && !isDesktop && 'fixed') || 'static';
+      const top = open && !isDesktop && `-${window.scrollY}px`;
+
+      document.body.style.overflow = overflow; // javascript is a funky business
+      document.body.style.height = height; // storing the values in variables
+      document.body.style.position = position; // allows these to work
+      document.body.style.top = top; // who woulda thunk it
+
+      if (!open) {
+        window.scrollTo(0, oldScrollPosition);
+      }
+    }),
+    rxjs.operators.filter(() => false),
+  );
+
 const actionLoggerEffect$ = actions$.pipe(
   rxjs.operators.tap(s => console.log('Action:', s)),
   rxjs.operators.filter(() => false), // dispatch: false
@@ -72,6 +115,7 @@ const effects = [
   modalOpenedEffect$,
   modalClosedEffect$,
   breakpointEffect$,
+  bodyNoScrollEffect$,
   actionLoggerEffect$,
   storeLoggerEffect$,
 ];

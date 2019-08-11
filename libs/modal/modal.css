@@ -63,7 +63,7 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: rgba(100, 100, 100, .75);
   z-index: 2;
   justify-content: center;
   align-items: center;
@@ -85,14 +85,14 @@
 }
 
 #modal div.modal-container {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  overflow-y: auto;
-  background-color: #fff;
   animation: flyOut 180ms ease-out;
+  background-color: #fff;
   opacity: 0;
+  overflow: scroll;
+  position: absolute;
   transform: scale(0) translateY(100px);
+  height: 85vh;
+  width: 85vw;
 }
 
 #modal.open div.modal-container {
@@ -108,11 +108,10 @@
 }
 
 #modal-content {
-  overflow-y: auto;
   max-width: none;
-  background-color: #fff;
   border-radius: .5rem;
   padding: 2rem;
+  height: 100%;
 }
 
 @media (min-width: 840px) {
@@ -133,6 +132,7 @@
 
 #modal-content div.keyline-container {
   position: relative;
+  margin-bottom: -4px;
 }
 
 #modal-content div.keyline {
@@ -154,15 +154,44 @@
 
 #modal-content section.meta {
   display: flex;
-  margin-bottom: 0.5rem;
+  flex-direction: column;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
+}
+
+@media (min-width: 840px) {
+  #modal-content section.meta {
+    flex-direction: row;
+    text-align: center;
+  }
 }
 
 #modal-content section.meta p {
   display: flex;
+  flex-direction: column;
+  flex: 1;
   margin-right: 0.5rem;
   font-size: 13px;
   text-transform: capitalize;
+  margin-bottom: 0;
+}
+
+@media (min-width: 840px) {
+  #modal-content section.meta p {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#modal-content section.meta p > span:nth-of-type(1) {
+  margin-bottom: 0.25rem;
+}
+
+#modal-content section.meta p > span:nth-of-type(2) {
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 #modal-content section.meta i {
@@ -194,14 +223,21 @@
   font-style: italic;
 }
 
-#modal-content section.source {
+#modal-content section.actions {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding-bottom: 2rem;
 }
 
-#modal-content section.source a,
-#modal-content section.source button
+@media(min-width: 840px) {
+  #modal-content section.actions {
+    padding-bottom: 0;
+  }
+}
+
+#modal-content section.actions a,
+#modal-content section.actions button
 {
   font-size: 15px;
   font-weight: 600;
@@ -215,6 +251,6 @@
   letter-spacing: 1px;
 }
 
-#modal-content section.source button {
+#modal-content section.actions button {
   margin-right: 1rem;
 }
