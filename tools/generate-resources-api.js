@@ -23,8 +23,8 @@ fs.readdir(resourcesDir, (err, files) => {
       .join('-')
       .replace(':', '')
       .replace("'", '')
-      .replace(".", '')
-      .replace("?", '');
+      .replace('.', '')
+      .replace('?', '');
     api.resources = {
       ...api.resources,
       [id]: {
@@ -36,7 +36,12 @@ fs.readdir(resourcesDir, (err, files) => {
   });
 
   api.tags = [
-    ...new Set(...Object.keys(api.resources).map(id => api.resources[id].tags)),
+    ...new Set(
+      Object.keys(api.resources).reduce(
+        (acc, val) => acc.concat(api.resources[val].tags),
+        [],
+      ),
+    ),
   ];
 
   fs.writeFileSync(`${dist}/api.json`, JSON.stringify(api), 'utf8');

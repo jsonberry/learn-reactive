@@ -2,8 +2,7 @@
 title: "The Introduction to Reactive Programming You've Been Missing"
 author: André Staltz
 tags:
- - FRP
- - Reactive Programming
+ - Functional Reactive Programming
  - RxJS
 cost: false
 difficulty: beginner
