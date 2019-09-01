@@ -1,136 +1,212 @@
-const filters = store$
-  .pipe(
-    rxjs.operators.filter(s => !!s.tags.length),
-    rxjs.operators.take(1),
-    rxjs.operators.map(
-      s =>
-        `
-      <form class="hidden" id="filters-form">
-        <label> 
-          <input type="checkbox" value="bestof">
-          Best Of
-        </label>
-        <label>
-          <input type="checkbox" value="free">
-          Free
-        </label>
-        <p>
-        Difficulty
-        </p>
-        <label>
-          <input type="checkbox" value="difficulty-introductory">
-          Introductory
-        </label>
-        <label>
-          <input type="checkbox" value="difficulty-beginner">
-          Beginner
-        </label>
-        <label>
-          <input type="checkbox" value="difficulty-intermediate">
-          Intermediate
-        </label>
-        <label>
-          <input type="checkbox" value="difficulty-advanced">
-          Advanced
-        </label>
-        <p>
-        Format
-        </p>
-        <label>
-          <input type="checkbox" value="format-video">
-          Video
-        </label>
-        <label>
-          <input type="checkbox" value="format-article">
-          Article
-        </label>
-        <label>
-          <input type="checkbox" value="format-podcast">
-          Podcast
-        </label>
-        <label>
-          <input type="checkbox" value="format-paper">
-          Paper
-        </label>
-        <p>Tags</p>
-        ${s.tags
-          .map(
-            tag => `
-            <label>
-              <input type="checkbox" value="tagged-${tag
-                .replace(' ', '_')
-                .toLowerCase()}">
-              ${tag}
-            </label>
-          `,
-          )
-          .join('')}
-        <button class="clear" type="reset">
-          Clear All
-        </button>
-      </form>
-      <button class="filter-entry" id="filters-toggle">
-        <i class="material-icons">filter_list</i>
-        Filters
-      </button>
-    `,
+import * as events from '../events.js';
+import { componentRendered, ofType } from '../utils.js';
+const {
+  filter,
+  map,
+  pluck,
+  shareReplay,
+  switchMap,
+  take,
+  tap,
+  withLatestFrom,
+  switchMapTo,
+} = rxjs.operators;
+const { fromEvent } = rxjs;
+
+export default function(sources) {
+  const componentReady$ = componentRendered('filters').pipe(shareReplay());
+
+  return {
+    data: sources.data$.pipe(
+      withLatestFrom(sources.store$),
+      tap(([{ tags }, state]) =>
+        sources.store$.next({ ...state, tags }),
+      ),
     ),
-  )
-  .subscribe(html => (document.getElementById('filters').innerHTML = html));
 
-const filterRendered$ = componentRendered('filters').pipe(
-  rxjs.operators.shareReplay(),
-);
-
-const sources = {
-  formChanged: filterRendered$.pipe(
-    rxjs.operators.switchMap(() =>
-      rxjs.fromEvent(document.getElementById('filters-form'), 'change'),
+    visibility: sources.events$.pipe(
+      ofType(events.FiltersToggled),
+      tap(() => {
+        const form = document.getElementById('filters-form');
+        form.classList.toggle('visible');
+        form.classList.toggle('hidden');
+        form.style.display = {
+          none: 'block',
+          block: 'none',
+        }[window.getComputedStyle(form).display];
+      }),
     ),
-    rxjs.operators.shareReplay(),
-  ),
-  formReset: filterRendered$.pipe(
-    rxjs.operators.switchMap(() =>
-      rxjs.fromEvent(document.getElementById('filters-form'), 'reset'),
+
+    filtered: componentReady$.pipe(
+      switchMap(() =>
+        fromEvent(document.getElementById('filters-form'), 'change'),
+      ),
+      tap(event => {
+        const [category, type] = event.target.value.split('-');
+        sources.events$.next(
+          new events.ResourcesFiltered(category, type, event.target.checked),
+        );
+      }),
     ),
-    rxjs.operators.shareReplay(),
-  ),
-  filterVisibilityToggled: filterRendered$.pipe(
-    rxjs.operators.switchMap(() =>
-      rxjs.fromEvent(document.getElementById('filters-toggle'), 'click'),
+
+    bestOf: sources.events$.pipe(
+      ofType(events.ResourcesFiltered),
+      filter(s => s.category === 'bestof'),
+      withLatestFrom(sources.store$),
+      tap(([action, state]) =>
+        sources.store$.next({
+          ...state,
+          bestof: action.checked,
+        }),
+      ),
     ),
-    rxjs.operators.shareReplay(),
-  ),
-};
 
-sources.formChanged.subscribe(event => {
-  const obj = event.target.value.split('-');
-  actions$.next({
-    type: 'resources filtered',
-    payload: {
-      category: obj[0],
-      type: obj[1],
-      checked: event.target.checked,
-    },
-  });
-});
+    free: sources.events$.pipe(
+      ofType(events.ResourcesFiltered),
+      filter(s => s.category === 'free'),
+      withLatestFrom(sources.store$),
+      tap(([action, state]) =>
+        sources.store$.next({
+          ...state,
+          free: action.checked,
+        }),
+      ),
+    ),
 
-sources.filterVisibilityToggled.subscribe(() => {
-  const form = document.getElementById('filters-form');
-  const openButton = document.getElementById('filters-toggle');
-  form.classList.toggle('visible');
-  form.classList.toggle('hidden');
-  openButton.classList.toggle('open');
-});
+    difficulty: sources.events$.pipe(
+      ofType(events.ResourcesFiltered),
+      filter(s => s.category === 'difficulty'),
+      withLatestFrom(sources.store$),
+      tap(([action, state]) =>
+        sources.store$.next({
+          ...state,
+          difficulty: action.checked
+            ? [...state.difficulty, action.type]
+            : state.difficulty.filter(d => d !== action.type),
+        }),
+      ),
+    ),
 
-sources.filterVisibilityToggled
-  .pipe(rxjs.operators.delay(180))
-  .subscribe(() => {
-    const form = document.getElementById('filters-form');
-    form.style.display = {
-      none: 'block',
-      block: 'none',
-    }[window.getComputedStyle(form).display];
-  });
+    format: sources.events$.pipe(
+      ofType(events.ResourcesFiltered),
+      filter(s => s.category === 'format'),
+      withLatestFrom(sources.store$),
+      tap(([action, state]) =>
+        sources.store$.next({
+          ...state,
+          format: action.checked
+            ? [...state.format, action.type]
+            : state.format.filter(d => d !== action.type),
+        }),
+      ),
+    ),
 
-sources.formReset.subscribe(() => actions$.next({ type: 'filters cleared' }));
+    tagged: sources.events$.pipe(
+      ofType(events.ResourcesFiltered),
+      filter(s => s.category === 'tagged'),
+      withLatestFrom(sources.store$),
+      tap(([action, state]) =>
+        sources.store$.next({
+          ...state,
+          tagged: action.checked
+            ? [...state.tagged, action.type]
+            : state.tagged.filter(d => d !== action.type),
+        }),
+      ),
+    ),
+
+    reset: componentReady$.pipe(
+      switchMap(() =>
+        fromEvent(document.getElementById('filters-form'), 'reset'),
+      ),
+      withLatestFrom(sources.store$),
+      tap(([action, state]) =>
+        sources.store$.next({
+          ...state,
+          tags: [],
+          bestof: false,
+          free: false,
+          difficulty: [],
+          format: [],
+          tagged: [],
+        }),
+      ),
+    ),
+
+    render: sources.store$.pipe(
+      filter(s => !!s.tags.length),
+      pluck('tags'),
+      take(1),
+      map(
+        tags =>
+          `
+        <form class="hidden" id="filters-form">
+          <label> 
+            <input type="checkbox" value="bestof">
+            Best Of
+          </label>
+          <label>
+            <input type="checkbox" value="free">
+            Free
+          </label>
+          <p>
+          Difficulty
+          </p>
+          <label>
+            <input type="checkbox" value="difficulty-introductory">
+            Introductory
+          </label>
+          <label>
+            <input type="checkbox" value="difficulty-beginner">
+            Beginner
+          </label>
+          <label>
+            <input type="checkbox" value="difficulty-intermediate">
+            Intermediate
+          </label>
+          <label>
+            <input type="checkbox" value="difficulty-advanced">
+            Advanced
+          </label>
+          <p>
+          Format
+          </p>
+          <label>
+            <input type="checkbox" value="format-video">
+            Video
+          </label>
+          <label>
+            <input type="checkbox" value="format-article">
+            Article
+          </label>
+          <label>
+            <input type="checkbox" value="format-podcast">
+            Podcast
+          </label>
+          <label>
+            <input type="checkbox" value="format-paper">
+            Paper
+          </label>
+          <p>Tags</p>
+          ${tags
+            .map(
+              tag => `
+              <label>
+                <input type="checkbox" value="tagged-${tag
+                  .replace(' ', '_')
+                  .toLowerCase()}">
+                ${tag}
+              </label>
+            `,
+            )
+            .join('')}
+          <button class="clear" type="reset">
+            Clear All
+          </button>
+        </form>
+      `,
+      ),
+      tap(html => (document.getElementById('filters').innerHTML = html)),
+    ),
+  };
+}

@@ -1,5 +1,5 @@
-const actions$ = new rxjs.Subject();
-const store$ = new rxjs.BehaviorSubject({
+export const events$ = new rxjs.Subject();
+export const store$ = new rxjs.BehaviorSubject({
   resources: null,
   tags: [],
   bestof: false,

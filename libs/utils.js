@@ -1,4 +1,6 @@
-const componentRendered = id =>
+const { filter } = rxjs.operators;
+
+export const componentRendered = id =>
   new rxjs.Observable(subscriber => {
     new MutationObserver((ml, observer) => {
       observer.disconnect();
@@ -8,3 +10,6 @@ const componentRendered = id =>
       childList: true,
     });
   });
+
+export const ofType = (...actions) => source$ =>
+  source$.pipe(filter(signal => actions.some(action => signal instanceof action)));

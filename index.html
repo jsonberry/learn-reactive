@@ -14,13 +14,15 @@
     />
     <link href="/libs/resource-list/resource-list.css" rel="stylesheet" />
     <link href="/libs/title/title.css" rel="stylesheet" />
+    <link href="/libs/filters-entry/filters-entry.css" rel="stylesheet" />
     <link href="/libs/filters/filters.css" rel="stylesheet" />
     <link href="/libs/modal/modal.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.min.js"></script>
-    <script src="libs/utils.js"></script>
-    <script src="libs/store.js"></script>
-    <script src="libs/effects.js"></script>
-    <script src="libs/reducers.js"></script>
+    <script type="module" src="libs/utils.js"></script>
+    <script type="module" src="libs/events.js"></script>
+    <script type="module" src="libs/store.js"></script>
+    <script type="module" src="libs/effects.js"></script>
+    <script type="module" src="libs/main.js"></script>
     <title>Learn Reactive</title>
     <style>
       * {
@@ -42,11 +44,13 @@
   <body>
     <section id="title"></section>
     <section id="list"></section>
+    <section id="filters-entry"></section>
     <section id="filters"></section>
-    <section id="modal"></section>
+    <section id="modal" class="closed"></section>
   </body>
-  <script src="libs/title/title.js"></script>
-  <script src="libs/resource-list/resource-list.js"></script>
-  <script src="libs/filters/filters.js"></script>
-  <script src="libs/modal/modal.js"></script>
+  <script type="module" src="libs/title/title.js"></script>
+  <script type="module" src="libs/resource-list/resource-list.js"></script>
+  <script type="module" src="libs/filters-entry/filters-entry.js"></script>
+  <script type="module" src="libs/filters/filters.js"></script>
+  <script type="module" src="libs/modal/modal.js"></script>
 </html>

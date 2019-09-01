@@ -25,9 +25,17 @@
 
 #filters {
   position: fixed;
+  z-index: 2;
   bottom: 1rem;
   margin-left: 1rem;
-  z-index: 2;
+  /* top: 0; */
+}
+
+@media(min-width: 840px) {
+  #filters {
+    bottom: 1rem;
+    top: initial;
+  }
 }
 
 #filters form {
@@ -35,8 +43,10 @@
   border-radius: 4px;
   box-shadow: -1px 1px 3px 3px rgba(121, 129, 135, .3);
   display: none;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
   padding: 1rem;
+  overflow: auto;
+  height: 300px;
 }
 
 #filters form.hidden {
@@ -83,7 +93,8 @@
 #filters button.filter-entry {
   display: flex;
   align-items: center;
-  font-size: 0.75rem;
+  /* font-size: 0.75rem; */
+  font-size: 1rem;
   background-color: #FFF;
   color: #212121;
   border: 1px solid #9E9E9E;
@@ -98,17 +109,19 @@
 }
 
 #filters button.filter-entry i {
-  font-size: 0.75rem;
+  /* font-size: 0.75rem;
+  margin-right: 0.5rem; */
+  font-size: 1rem;
   margin-right: 0.5rem;
 }
 
 @media(min-width: 840px) {
   #filters button.filter-entry {
-   font-size: 1rem;
+   /* font-size: 1rem; */
   }
 
   #filters button.filter-entry i {
-    font-size: 1rem;
-    margin-right: 0.5rem;
+    /* font-size: 1rem; */
+    /* margin-right: 0.5rem; */
   }
 }

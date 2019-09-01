@@ -84,7 +84,7 @@
   animation: fadeIn 180ms ease-in forwards;
 }
 
-#modal div.modal-container {
+#modal #content-container {
   animation: flyOut 180ms ease-out;
   background-color: #fff;
   opacity: 0;
@@ -95,15 +95,16 @@
   width: 85vw;
 }
 
-#modal.open div.modal-container {
+#modal.open #content-container {
   animation: flyIn 180ms ease-out 180ms forwards;
 }
 
 @media (min-width: 840px) {
-  #modal div.modal-container {
+  #modal #content-container {
     width: auto;
     height: auto;
     position: relative;
+    overflow: auto;
   }
 }
 

@@ -1,123 +1,69 @@
-const windowLoadEffect$ = rxjs.fromEvent(window, 'load').pipe(
-  rxjs.operators.tap(s => console.log('window loaded!', s)),
-  rxjs.operators.mapTo({ type: 'window loaded' }),
-);
+import * as events from './events.js';
+import { ofType } from './utils.js';
+const { merge, fromEvent, fromEventPattern, combineLatest } = rxjs;
+const { mapTo, startWith, switchMapTo, pluck, tap } = rxjs.operators;
 
-const loadResourcesEffect$ = actions$.pipe(
-  rxjs.operators.filter(s => s.type === 'window loaded'),
-  rxjs.operators.switchMapTo(rxjs.fetch.fromFetch('./api.json')),
-  rxjs.operators.switchMap(res => res.json()),
-  rxjs.operators.map(({ resources, tags }) => ({
-    resources,
-    tags,
-    type: 'resources loaded',
-  })),
-);
-
-const modalOpenedEffect$ = actions$.pipe(
-  rxjs.operators.filter(s => s.type === 'resource selected'),
-  rxjs.operators.tap(() => {
-    document.getElementById('modal').classList.add('open');
-  }),
-  rxjs.operators.filter(() => false), // dispatch: false
-);
-
-const modalClosedEffect$ = rxjs
-  .merge(
-    rxjs
-      .fromEvent(window, 'click')
-      .pipe(rxjs.operators.filter(s => s.target.id === 'modal')),
-    rxjs
-      .fromEvent(window, 'keyup')
-      .pipe(rxjs.operators.filter(s => s.key === 'Escape')),
-    actions$.pipe(
-      rxjs.operators.filter(s => s.type === 'modal close button clicked'),
+export default function(sources) {
+  return {
+    windowLoaded: fromEvent(sources.window, 'load').pipe(
+      tap(() => sources.events$.next(new events.WindowLoaded())),
     ),
-  )
-  .pipe(
-    rxjs.operators.tap(() => {
-      document.getElementById('modal').classList.add('closed');
-      document.getElementById('modal').classList.remove('open');
-    }),
-    rxjs.operators.mapTo({ type: 'modal closed' }),
-  );
 
-const breakpointEffect$ = actions$.pipe(
-  rxjs.operators.filter(s => s.type === 'window loaded'),
-  rxjs.operators.switchMapTo(
-    rxjs.fromEventPattern(handler =>
-      window.matchMedia('(min-width: 840px)').addListener(handler),
-    ),
-  ),
-  rxjs.operators.startWith(window.matchMedia('(min-width: 840px)')),
-  rxjs.operators.map(({ matches: isDesktop }) => ({
-    isDesktop,
-    type: 'breakpoint',
-  })),
-);
-
-const bodyNoScrollEffect$ = rxjs
-  .combineLatest(
-    rxjs.merge(
-      actions$.pipe(
-        rxjs.operators.filter(s => s.type === 'resource selected'),
-        rxjs.operators.mapTo(true),
+    breakpoint: sources.events$.pipe(
+      ofType(events.WindowLoaded),
+      switchMapTo(
+        fromEventPattern(handler =>
+          window.matchMedia('(min-width: 840px)').addListener(handler),
+        ),
       ),
-      actions$.pipe(
-        rxjs.operators.filter(s => s.type === 'modal closed'),
-        rxjs.operators.mapTo(false),
+      startWith(window.matchMedia('(min-width: 840px)')),
+      tap(({ matches }) =>
+        sources.events$.next(new events.Breakpoint(matches)),
       ),
     ),
-    actions$.pipe(
-      rxjs.operators.filter(s => s.type === 'breakpoint'),
-      rxjs.operators.startWith({
-        isDesktop: window.matchMedia('(min-width: 840px)').matches,
+
+    lockBodyScroll: combineLatest(
+      merge(
+        sources.events$.pipe(
+          ofType(events.ResourceSelected),
+          mapTo(true),
+        ),
+        sources.events$.pipe(
+          ofType(events.ModalClosed),
+          mapTo(false),
+        ),
+      ),
+      sources.events$.pipe(
+        ofType(events.Breakpoint),
+        startWith({
+          isDesktop: sources.window.matchMedia('(min-width: 840px)').matches,
+        }),
+        pluck('isDesktop'),
+      ),
+    ).pipe(
+      tap(([open, isDesktop]) => {
+        const oldScrollPosition = !open
+          ? Math.abs(parseInt(document.body.style.top))
+          : null;
+
+        const overflow = (open && 'hidden') || 'auto';
+        const height = (open && !isDesktop && '100vh') || 'auto';
+        const position = (open && !isDesktop && 'fixed') || 'static';
+        const top = open && `-${window.scrollY}px`;
+
+        document.body.style.overflow = overflow; // javascript is a funky business
+        document.body.style.height = height; // storing the values in variables
+        document.body.style.position = position; // allows these to work
+        document.body.style.top = top; // who woulda thunk it
+
+        if (!open) {
+          sources.window.scrollTo(0, oldScrollPosition);
+        }
       }),
-      rxjs.operators.pluck('isDesktop'),
     ),
-  )
-  .pipe(
-    rxjs.operators.tap(([open, isDesktop]) => {
-      const oldScrollPosition = !open
-        ? Math.abs(parseInt(document.body.style.top))
-        : null;
 
-      const overflow = (open && 'hidden') || 'auto';
-      const height = (open && !isDesktop && '100vh') || 'auto';
-      const position = (open && !isDesktop && 'fixed') || 'static';
-      const top = open && !isDesktop && `-${window.scrollY}px`;
+    eventLogger: sources.events$.pipe(tap(s => console.log('Event:', s))),
 
-      document.body.style.overflow = overflow; // javascript is a funky business
-      document.body.style.height = height; // storing the values in variables
-      document.body.style.position = position; // allows these to work
-      document.body.style.top = top; // who woulda thunk it
-
-      if (!open) {
-        window.scrollTo(0, oldScrollPosition);
-      }
-    }),
-    rxjs.operators.filter(() => false),
-  );
-
-const actionLoggerEffect$ = actions$.pipe(
-  rxjs.operators.tap(s => console.log('Action:', s)),
-  rxjs.operators.filter(() => false), // dispatch: false
-);
-
-const storeLoggerEffect$ = store$.pipe(
-  rxjs.operators.tap(s => console.log('Store:', s)),
-  rxjs.operators.filter(() => false), // dispatch: false
-);
-
-const effects = [
-  windowLoadEffect$,
-  loadResourcesEffect$,
-  modalOpenedEffect$,
-  modalClosedEffect$,
-  breakpointEffect$,
-  bodyNoScrollEffect$,
-  actionLoggerEffect$,
-  storeLoggerEffect$,
-];
-
-effects.forEach(effect => effect.subscribe(s => actions$.next(s)));
+    storeLogger: sources.store$.pipe(tap(s => console.log('Store:', s))),
+  };
+}

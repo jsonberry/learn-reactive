@@ -1,0 +1,29 @@
+#filters-entry {
+  position: fixed;
+  z-index: 3;
+  bottom: 1rem;
+  margin-left: 1rem;
+}
+
+#filters-entry button {
+  align-items: center;
+  background-color: #FFF;
+  border-radius: 18px;
+  border: 1px solid #9E9E9E;
+  color: #212121;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  transition: all 180ms;
+  padding: 0.25rem 0.5rem;
+}
+
+#filters-entry button.open {
+  background-color: #212121;
+  color: #FFF;
+}
+
+#filters-entry i {
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
