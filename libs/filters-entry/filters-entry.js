@@ -1,4 +1,3 @@
-import { events$ } from '../store.js';
 import { componentRendered, ofType } from '../utils.js';
 import * as events from '../events.js';
 const {
@@ -19,7 +18,7 @@ export default function(sources) {
       scan(acc => !acc, false),
       tap(open => {
         document.getElementById('filters-toggle').classList.toggle('open');
-        events$.next(new events.FiltersToggled(open));
+        sources.events$.next(new events.FiltersToggled(open));
       }),
     ),
 

@@ -12,8 +12,35 @@
 
 #title p {
   color: #009688;
-  margin: 0 1rem 0 0;
+  margin: 0 1rem 0.25rem 0;
   display: inline-block;
+}
+
+#title div {
+  margin-bottom: 2rem;
+}
+
+#title a {
+  background-color: #FFF;
+  border-radius: 18px;
+  border: 1px solid #9E9E9E;
+  color: #212121;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 180ms;
+  padding: 0.25rem 1rem;
+  text-decoration: none;
+}
+
+#title i {
+  position: relative;
+  top: 2px;
+  font-size: 1rem;
+}
+
+#title a:hover {
+  background-color: #212121;
+  color: #FFF;
 }
 
 @media (min-width: 1440px) {

@@ -15,10 +15,12 @@
   display: flex;
   font-size: 1rem;
   transition: all 180ms;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 1rem;
 }
 
-#filters-entry button.open {
+#filters-entry button.open,
+#filters-entry button:hover, 
+#filters-entry button:focus {
   background-color: #212121;
   color: #FFF;
 }

@@ -1,14 +1,14 @@
-import { ofType } from '../utils.js'
-import * as events from '../events.js'
+import { ofType } from '../utils.js';
+import * as events from '../events.js';
 const {
-  tap,
-  filter,
   delay,
-  withLatestFrom,
+  filter,
   map,
   mapTo,
   switchMap,
   take,
+  tap,
+  withLatestFrom,
 } = rxjs.operators;
 const { fromEvent, merge } = rxjs;
 

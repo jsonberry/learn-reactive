@@ -22,6 +22,7 @@ assignees: jsonberry
 
 ### Optional Attributes
 - title: Maybe something shorter than the original?
+- social: Author social media accounts like their twitter handle
 
 ### Summary
 [ Please write a brief summary of the resource ]

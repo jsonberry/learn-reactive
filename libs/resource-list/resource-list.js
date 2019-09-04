@@ -1,34 +1,26 @@
 import * as events from '../events.js';
-import { ofType } from '../utils.js';
 const { fromEvent } = rxjs;
 const {
   distinctUntilChanged,
   filter,
   map,
-  switchMap,
-  switchMapTo,
   tap,
   withLatestFrom,
 } = rxjs.operators;
 
 export default function(sources) {
   return {
-    data: sources.data$.pipe(
+    data: sources.data$().pipe(
       withLatestFrom(sources.store$),
       tap(([{ resources }, state]) =>
         sources.store$.next({ ...state, resources }),
       ),
     ),
 
-    selected: fromEvent(sources.document.getElementById('list'), 'click').pipe(
-      map(event => {
-        const el = event.path.find(
-          el => el && el.dataset && el.dataset.resourceId,
-        );
-        return el && el.dataset.resourceId;
-      }),
-      filter(s => !!s),
-      tap(id => sources.events$.next(new events.ResourceSelected(id))),
+    selected: fromEvent(sources.window, 'resourceSelected').pipe(
+      tap(({ detail: { resourceId } }) =>
+        sources.events$.next(new events.ResourceSelected(resourceId)),
+      ),
     ),
 
     render: sources.store$.pipe(
@@ -74,8 +66,14 @@ export default function(sources) {
         ${s.reduce(
           (acc, { id, title, difficulty, format, cost, tags, bestOf }) =>
             acc.concat(`
-              <button 
+              <button
+                class="resource-list-button"
                 data-resource-id=${id}
+                onclick="window.dispatchEvent(new CustomEvent('resourceSelected', {
+                  detail: {
+                    resourceId: '${id}'
+                  },
+                }))"
               >
                 ${
                   cost

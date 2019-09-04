@@ -17,7 +17,7 @@ export default function(sources) {
   const componentReady$ = componentRendered('filters').pipe(shareReplay());
 
   return {
-    data: sources.data$.pipe(
+    data: sources.data$().pipe(
       withLatestFrom(sources.store$),
       tap(([{ tags }, state]) =>
         sources.store$.next({ ...state, tags }),
