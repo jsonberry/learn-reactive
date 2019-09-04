@@ -226,9 +226,15 @@
 
 #modal-content section.actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding-bottom: 2rem;
+}
+
+#modal-content section.actions i {
+  position: relative;
+  top: 2px;
+  font-size: 1rem;
 }
 
 @media(min-width: 840px) {

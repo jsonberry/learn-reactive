@@ -91,6 +91,11 @@ export default function(sources) {
                 </section>
       
                 <section class="actions">
+                  <a href="https://github.com/jsonberry/learn-reactive/edit/next/resources/${resource.id}.md" target="_blank">
+                    <i class="material-icons" title="Edit Resource Details">edit</i>
+                    Edit
+                  </a>
+                  <div>
                   <button>
                     close
                   </button>
@@ -103,6 +108,7 @@ export default function(sources) {
                         `
                       : ''
                   }
+                  </div>
                 </section>
             </article>
         `;
