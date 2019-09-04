@@ -1,0 +1,29 @@
+{
+  "name": "learn-reactive",
+  "version": "1.0.0",
+  "description": "Reactive Programming Resources",
+  "main": "index.html",
+  "scripts": {
+    "build": "node tools/generate-resources-api.js"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.2",
+    "http-server": "^0.11.1",
+    "marked": "^0.7.0",
+    "metalsmith": "^2.3.0",
+    "metalsmith-markdown": "^1.2.0",
+    "metalsmith-collections": "^0.9.0",
+    "metalsmith-to-json": "^1.0.0",
+    "metalsmith-writemetadata": "^0.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsonberry/learn-reactive.git"
+  },
+  "author": "Jason Awbrey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jsonberry/learn-reactive/issues"
+  },
+  "homepage": "https://learnreactive.com"
+}
