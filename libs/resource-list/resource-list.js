@@ -28,7 +28,7 @@ export default function(sources) {
       map(s => {
         const predicates = [
           s.bestof ? resource => resource.bestOf : null,
-          s.cost ? resource => !resource.cost : null,
+          s.free ? resource => !resource.cost : null,
           s.difficulty.length
             ? (resource, store) =>
                 store.difficulty.includes(resource.difficulty)
@@ -42,7 +42,7 @@ export default function(sources) {
                   store.tagged.includes(tag.replace(' ', '_').toLowerCase()),
                 )
             : null,
-        ].filter(Boolean);
+        ].filter(p => p !== null);
 
         return Object.keys(s.resources).reduce((acc, id) => {
           const resource = {
