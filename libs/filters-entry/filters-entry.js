@@ -22,6 +22,12 @@ export default function(sources) {
       }),
     ),
 
+    /**
+     * This is just a temporary solution so that
+     * the filter button isn't hideous when the
+     * modal is open, not going to care about this
+     * as a long lasting solution
+     */
     display: merge(
       sources.events$.pipe(
         ofType(events.ResourceSelected),
