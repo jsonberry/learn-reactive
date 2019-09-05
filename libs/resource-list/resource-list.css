@@ -52,10 +52,18 @@
 
  #list h1 {
   color: #212121;
-  font-size: 1.5rem;
+  font-size: 31px;
+  line-height: 49px;
   letter-spacing: 0.5px;
   margin-bottom: 0;
   margin-top: 0;
+}
+
+@media(min-width: 840px) {
+  #list h1 {
+    font-size: 39px;
+    line-height: 60px;
+ }
 }
 
 #list hr { 
@@ -97,10 +105,6 @@
   #list button {
    width: 742px;
  }
-
-  #list h1 {
-    font-size: 2rem;
-  }
 }
 
 @media(min-width: 1440px) {
