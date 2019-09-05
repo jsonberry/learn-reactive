@@ -103,6 +103,7 @@
   #modal #content-container {
     width: auto;
     height: auto;
+    max-height: 95vh;
     position: relative;
     overflow: auto;
   }
@@ -128,7 +129,15 @@
 #modal-content h1 {
   margin-top: 0;
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 31px;
+  line-height: 49px;
+}
+
+@media (min-width: 840px) {
+  #modal-content h1 {
+    font-size: 39px;
+    line-height: 60px;
+  }
 }
 
 #modal-content div.keyline-container {
@@ -172,7 +181,8 @@
   flex-direction: column;
   flex: 1;
   margin-right: 0.5rem;
-  font-size: 13px;
+  font-size: 15px;
+  line-height: 26px;
   text-transform: capitalize;
   margin-bottom: 0;
 }
@@ -207,6 +217,8 @@
 
 #modal-content section.content {
   margin-bottom: 2rem;
+  font-size: 19px;
+  line-height: 32px;
 }
 
 #modal-content iframe {
