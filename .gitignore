@@ -41,4 +41,4 @@ Thumbs.db
 # App Specific
 /logs
 .env
-
+api.json
