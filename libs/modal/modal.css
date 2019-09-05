@@ -205,6 +205,10 @@
   font-weight: 100;
 }
 
+#modal-content section.content {
+  margin-bottom: 2rem;
+}
+
 #modal-content iframe {
   display: block;
   margin: 0 auto;
@@ -229,12 +233,6 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 2rem;
-}
-
-#modal-content section.actions i {
-  position: relative;
-  top: 2px;
-  font-size: 1rem;
 }
 
 @media(min-width: 840px) {
