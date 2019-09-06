@@ -1,5 +1,6 @@
 ---
 title: "RxJS By Example: Composition of Events"
+author: Ben Lesh
 bestOf: true
 difficulty: intermediate
 cost: false
