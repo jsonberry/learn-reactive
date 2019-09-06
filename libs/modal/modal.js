@@ -1,5 +1,5 @@
-import { ofType } from '../utils.js';
 import * as events from '../events.js';
+import { ofType } from '../utils.js';
 const {
   delay,
   filter,
@@ -25,14 +25,15 @@ export default function(sources) {
     ),
 
     closed: merge(
-      fromEvent(window, 'click').pipe(filter(s => s.target.id === 'modal')),
       sources.events$.pipe(
         ofType(events.ResourceSelected),
         switchMap(() =>
-          fromEvent(window, 'keyup').pipe(
-            filter(s => s.key === 'Escape'),
-            take(1),
-          ),
+          merge(
+            fromEvent(window, 'keyup').pipe(filter(s => s.key === 'Escape')),
+            fromEvent(window, 'click').pipe(
+              filter(s => s.target.id === 'modal'),
+            ),
+          ).pipe(take(1)),
         ),
       ),
       fromEvent(modal, 'click').pipe(
@@ -91,7 +92,9 @@ export default function(sources) {
                 </section>
       
                 <section class="actions">
-                  <a href="https://github.com/jsonberry/learn-reactive/edit/next/resources/${resource.id}.md" target="_blank">
+                  <a href="https://github.com/jsonberry/learn-reactive/edit/next/resources/${
+                    resource.id
+                  }.md" target="_blank">
                     <i class="material-icons" title="Edit Resource Details">edit</i>
                   </a>
                   <div>
