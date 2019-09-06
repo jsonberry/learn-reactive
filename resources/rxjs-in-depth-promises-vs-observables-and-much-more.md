@@ -18,4 +18,4 @@ Recorded in 2015 at AngularConnect, Ben Lesh goes through a beginner talk on RxJ
 
 At the end there is a multiplexed WebSocket stock ticker example that’s well worth checking out. This can help show some of the power behind Rx outside of handling mouse clicks and XHR requests.
 
-> Note: Some of the RxJS syntax is outdated, see the [pipeable operators](https://rxjs.dev/guide/v6/pipeable-operators) doc for updates
+> Some of the RxJS syntax is outdated, see the [pipeable operators](https://rxjs.dev/guide/v6/pipeable-operators) doc for updates.

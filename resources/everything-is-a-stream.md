@@ -13,4 +13,4 @@ bestOf: true
 
 Presented by [Rob Wormald](https://twitter.com/robwormald) in 2015, this is one of the best introductory video overviews of RxJS and reactive programming. Rob went on to create NgRx and now works on the Angular team.
 
-> Note: Some of the RxJS syntax is outdated, see the [pipeable operators](https://rxjs.dev/guide/v6/pipeable-operators) doc for updates. Also note the **flatmap** operator is now just an alias for the preferred operator [mergeMap](https://rxjs.dev/api/operators/mergeMap).
+> Some of the RxJS syntax is outdated, see the [pipeable operators](https://rxjs.dev/guide/v6/pipeable-operators) doc for updates. Also note the **flatmap** operator is now just an alias for the preferred operator [mergeMap](https://rxjs.dev/api/operators/mergeMap).
