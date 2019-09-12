@@ -17,8 +17,14 @@ assignees: jsonberry
 - cost: true | false
 - tags: Try to use tags already on the site (check the filters), add new tags if necessary
 - difficulty: introductory | beginner | intermediate | advanced
-- format: video | paper | article | podcast
+- format: video | paper | article | podcast (choose one)
 - source: Link to source
+
+### Difficulty Definitions
+- introductory: You're brand new to this topic, you want to see what it's all about.
+- beginner: You have an idea of what this is about, but you're still at the very beginning of your working knowledge.
+- intermediate: You're able to adapt and apply the basic knowledge to solve new challenges, and you're ready to learn more.
+- advanced: You're well beyond the basics, you've worked with this enough to have solved some difficult challenges, and you're ready for advanced concepts.
 
 ### Optional Attributes
 - title: Maybe something shorter than the original?
