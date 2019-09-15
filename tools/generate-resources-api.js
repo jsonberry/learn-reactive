@@ -39,7 +39,7 @@ fs.readdir(resourcesDir, (err, files) => {
         [],
       ),
     ),
-  ];
+  ].sort();
 
   fs.writeFileSync(`${dist}/api.json`, JSON.stringify(api), 'utf8');
 });
