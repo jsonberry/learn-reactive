@@ -6,7 +6,7 @@ tags:
  - RxJS
 cost: true
 difficulty: beginner
-format: video
+format: course
 source: https://www.packtpub.com/web-development/hands-rxjs-web-development-video
 ---
 
