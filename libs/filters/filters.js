@@ -191,6 +191,10 @@ export default function(sources) {
             <input type="checkbox" value="format-course">
             Course
           </label>
+          <label>
+            <input type="checkbox" value="format-example">
+            Example
+          </label>
           <p>Tags</p>
           ${tags
             .map(

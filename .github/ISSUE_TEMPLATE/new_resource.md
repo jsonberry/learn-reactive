@@ -16,8 +16,8 @@ assignees: jsonberry
 - author: All listed authors
 - cost: true | false
 - tags: Try to use tags already on the site (check the filters), add new tags if necessary
-- difficulty: introductory | beginner | intermediate | advanced
-- format: video | paper | article | podcast (choose one)
+- difficulty: introductory | beginner | intermediate | advanced (choose one)
+- format: article | course | example | paper | podcast | video (choose one)
 - source: Link to source
 
 ### Difficulty Definitions
