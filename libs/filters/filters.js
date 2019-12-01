@@ -195,6 +195,10 @@ export default function(sources) {
             <input type="checkbox" value="format-example">
             Example
           </label>
+          <label>
+            <input type="checkbox" value="format-tool">
+            Tool
+          </label>
           <p>Tags</p>
           ${tags
             .map(
