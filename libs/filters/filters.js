@@ -180,6 +180,10 @@ export default function(sources) {
             Article
           </label>
           <label>
+            <input type="checkbox" value="format-book">
+            Book
+          </label>
+          <label>
             <input type="checkbox" value="format-podcast">
             Podcast
           </label>
