@@ -19,9 +19,7 @@ export default function(sources) {
   return {
     data: sources.data$().pipe(
       withLatestFrom(sources.store$),
-      tap(([{ tags }, state]) =>
-        sources.store$.next({ ...state, tags }),
-      ),
+      tap(([{ tags }, state]) => sources.store$.next({ ...state, tags })),
     ),
 
     visibility: sources.events$.pipe(
@@ -169,40 +167,49 @@ export default function(sources) {
             Advanced
           </label>
           <p>
-          Format
+            Format
           </p>
-          <label>
-            <input type="checkbox" value="format-video">
-            Video
-          </label>
+
           <label>
             <input type="checkbox" value="format-article">
             Article
           </label>
+
           <label>
             <input type="checkbox" value="format-book">
             Book
           </label>
-          <label>
-            <input type="checkbox" value="format-podcast">
-            Podcast
-          </label>
-          <label>
-            <input type="checkbox" value="format-paper">
-            Paper
-          </label>
+
           <label>
             <input type="checkbox" value="format-course">
             Course
           </label>
+
           <label>
             <input type="checkbox" value="format-example">
             Example
           </label>
+
+          <label>
+            <input type="checkbox" value="format-paper">
+            Paper
+          </label>
+
+          <label>
+            <input type="checkbox" value="format-podcast">
+            Podcast
+          </label>
+
           <label>
             <input type="checkbox" value="format-tool">
             Tool
           </label>
+          
+          <label>
+            <input type="checkbox" value="format-video">
+            Video
+          </label>
+
           <p>Tags</p>
           ${tags
             .map(
